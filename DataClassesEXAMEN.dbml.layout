@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClassesEXAMEN">
+  <DataContextMoniker Name="/DataClassesEXAMENDataContext" />
+  <nestedChildShapes>
+    <classShape Id="8a8a38a7-7915-418f-8190-840d0a9332f1" absoluteBounds="1.25, 0.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataClassesEXAMENDataContext/Usuarios" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a2661582-720c-4ce0-9b6b-edc4f1b8157f" absoluteBounds="1.2649999999999997, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c0cd865a-14f8-4323-9caf-c053c747a391" absoluteBounds="1.25, 2.125, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DataClassesEXAMENDataContext/clientes" />
+      <nestedChildShapes>
+        <elementListCompartment Id="544dc3a5-8597-4a31-ad33-33f841d3e2f3" absoluteBounds="1.2649999999999997, 2.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cb0fa1c3-cd75-487a-a9a6-e82ab28eefd2" absoluteBounds="4.5, 2, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/DataClassesEXAMENDataContext/Venta" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fcbfe2c6-f4e7-47d0-aeff-8167c1b02824" absoluteBounds="4.515, 2.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.25 : 3.10659912109375); (4.5 : 3.10659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesEXAMENDataContext/clientes/clientes_Venta" />
+      <nodes>
+        <classShapeMoniker Id="c0cd865a-14f8-4323-9caf-c053c747a391" />
+        <classShapeMoniker Id="cb0fa1c3-cd75-487a-a9a6-e82ab28eefd2" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

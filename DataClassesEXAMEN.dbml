@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="UMGEXAMEN" Class="DataClassesEXAMENDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=UMGEXAMEN;User ID=COATEPEQUE;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="UMGEXAMENConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Usuarios" Member="Usuarios">
+    <Type Name="Usuarios">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="correo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="clave" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.clientes" Member="clientes">
+    <Type Name="clientes">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Dpi" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="nombres" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="direccion" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="telefono" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="limiteCredito" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Association Name="clientes_Venta" Member="Venta" ThisKey="id" OtherKey="cliente" Type="Venta" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Venta" Member="Venta">
+    <Type Name="Venta">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SerieFactura" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Mes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monto" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="TipoFactura" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EstadoFactura" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="cliente" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="clientes_Venta" Member="clientes" ThisKey="cliente" OtherKey="id" Type="clientes" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
