@@ -36,6 +36,9 @@ namespace ControlPagosFacturas
     partial void Insertclientes(clientes instance);
     partial void Updateclientes(clientes instance);
     partial void Deleteclientes(clientes instance);
+    partial void InsertMES(MES instance);
+    partial void UpdateMES(MES instance);
+    partial void DeleteMES(MES instance);
     partial void InsertVenta(Venta instance);
     partial void UpdateVenta(Venta instance);
     partial void DeleteVenta(Venta instance);
@@ -84,6 +87,14 @@ namespace ControlPagosFacturas
 			get
 			{
 				return this.GetTable<clientes>();
+			}
+		}
+		
+		public System.Data.Linq.Table<MES> MES
+		{
+			get
+			{
+				return this.GetTable<MES>();
 			}
 		}
 		
@@ -416,6 +427,120 @@ namespace ControlPagosFacturas
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MES")]
+	public partial class MES : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _descripcion;
+		
+		private EntitySet<Venta> _Venta;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OndescripcionChanging(string value);
+    partial void OndescripcionChanged();
+    #endregion
+		
+		public MES()
+		{
+			this._Venta = new EntitySet<Venta>(new Action<Venta>(this.attach_Venta), new Action<Venta>(this.detach_Venta));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(100)")]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this.OndescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._descripcion = value;
+					this.SendPropertyChanged("descripcion");
+					this.OndescripcionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MES_Venta", Storage="_Venta", ThisKey="id", OtherKey="Mes")]
+		public EntitySet<Venta> Venta
+		{
+			get
+			{
+				return this._Venta;
+			}
+			set
+			{
+				this._Venta.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Venta(Venta entity)
+		{
+			this.SendPropertyChanging();
+			entity.MES1 = this;
+		}
+		
+		private void detach_Venta(Venta entity)
+		{
+			this.SendPropertyChanging();
+			entity.MES1 = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Venta")]
 	public partial class Venta : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -439,6 +564,8 @@ namespace ControlPagosFacturas
 		private System.Nullable<int> _cliente;
 		
 		private EntityRef<clientes> _clientes;
+		
+		private EntityRef<MES> _MES1;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -465,6 +592,7 @@ namespace ControlPagosFacturas
 		public Venta()
 		{
 			this._clientes = default(EntityRef<clientes>);
+			this._MES1 = default(EntityRef<MES>);
 			OnCreated();
 		}
 		
@@ -539,6 +667,10 @@ namespace ControlPagosFacturas
 			{
 				if ((this._Mes != value))
 				{
+					if (this._MES1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMesChanging(value);
 					this.SendPropertyChanging();
 					this._Mes = value;
@@ -662,6 +794,40 @@ namespace ControlPagosFacturas
 						this._cliente = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("clientes");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MES_Venta", Storage="_MES1", ThisKey="Mes", OtherKey="id", IsForeignKey=true)]
+		public MES MES1
+		{
+			get
+			{
+				return this._MES1.Entity;
+			}
+			set
+			{
+				MES previousValue = this._MES1.Entity;
+				if (((previousValue != value) 
+							|| (this._MES1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MES1.Entity = null;
+						previousValue.Venta.Remove(this);
+					}
+					this._MES1.Entity = value;
+					if ((value != null))
+					{
+						value.Venta.Add(this);
+						this._Mes = value.id;
+					}
+					else
+					{
+						this._Mes = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("MES1");
 				}
 			}
 		}

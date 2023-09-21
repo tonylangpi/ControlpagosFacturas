@@ -14,17 +14,30 @@
         <elementListCompartment Id="544dc3a5-8597-4a31-ad33-33f841d3e2f3" absoluteBounds="1.2649999999999997, 2.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="cb0fa1c3-cd75-487a-a9a6-e82ab28eefd2" absoluteBounds="4.5, 2, 2, 2.3478011067708335">
-      <DataClassMoniker Name="/DataClassesEXAMENDataContext/Venta" />
+    <classShape Id="63babae9-8908-46af-b6d5-e87ba51a5797" absoluteBounds="6, 0.5, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/DataClassesEXAMENDataContext/MES" />
       <nestedChildShapes>
-        <elementListCompartment Id="fcbfe2c6-f4e7-47d0-aeff-8167c1b02824" absoluteBounds="4.515, 2.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f4440137-1f5b-4fbf-bb87-3f2b4a0fd920" absoluteBounds="6.015, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.25 : 3.10659912109375); (4.5 : 3.10659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="00b66649-b6bb-4918-a391-f12099a92c7e" absoluteBounds="4.25, 2.25, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/DataClassesEXAMENDataContext/Venta" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fdf0c44d-e805-4a4a-9040-1ec7290cf6de" absoluteBounds="4.265, 2.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.25 : 3.16909912109375); (4.25 : 3.16909912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataClassesEXAMENDataContext/clientes/clientes_Venta" />
       <nodes>
         <classShapeMoniker Id="c0cd865a-14f8-4323-9caf-c053c747a391" />
-        <classShapeMoniker Id="cb0fa1c3-cd75-487a-a9a6-e82ab28eefd2" />
+        <classShapeMoniker Id="00b66649-b6bb-4918-a391-f12099a92c7e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6 : 1.09699625651042); (5.1249995 : 1.09699625651042); (5.1249995 : 2.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesEXAMENDataContext/MES/MES_Venta" />
+      <nodes>
+        <classShapeMoniker Id="63babae9-8908-46af-b6d5-e87ba51a5797" />
+        <classShapeMoniker Id="00b66649-b6bb-4918-a391-f12099a92c7e" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

@@ -194,7 +194,6 @@ namespace ControlPagosFacturas
 
             if (TxtSeriefact.Text != string.Empty)
             {
-            
                 var venBuscar =
             from ventas in bd.Venta
             join clientes in bd.clientes on ventas.cliente equals clientes.id

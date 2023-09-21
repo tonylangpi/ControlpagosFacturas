@@ -18,6 +18,13 @@
       <Association Name="clientes_Venta" Member="Venta" ThisKey="id" OtherKey="cliente" Type="Venta" />
     </Type>
   </Table>
+  <Table Name="dbo.MES" Member="MES">
+    <Type Name="MES">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="MES_Venta" Member="Venta" ThisKey="id" OtherKey="Mes" Type="Venta" />
+    </Type>
+  </Table>
   <Table Name="dbo.Venta" Member="Venta">
     <Type Name="Venta">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -29,6 +36,7 @@
       <Column Name="EstadoFactura" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="cliente" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="clientes_Venta" Member="clientes" ThisKey="cliente" OtherKey="id" Type="clientes" IsForeignKey="true" />
+      <Association Name="MES_Venta" Member="MES1" ThisKey="Mes" OtherKey="id" Type="MES" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

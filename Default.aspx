@@ -20,10 +20,23 @@
 
     <div class="row">
          <div class="col-md-4">
-             <label class="form-label">Saldo pagado total al credito</label>
-             <asp:Label ID="SaldoPagado" runat="server" Text="Saldo pagado al credito total:"></asp:Label>
-             <label class="form-label">Saldo al credito aun pendiente de pagar</label>
-             <asp:Label ID="SaldoPendiente" runat="server" Text="Saldo al credito aun pendiente"></asp:Label>
+             <div class="card">
+                 <div class="card-body">
+                     <h5 class="card-title">INFORMACIÓN DE SALDOS CLIENTE</h5>
+                     <div class="mb-2">
+                          <label class="form-label">Saldo pagado total al credito</label>
+                          <asp:Label ID="SaldoPagado" runat="server" Text="Saldo pagado al credito total:"></asp:Label>
+                     </div>
+                     <div class="mb-2">
+                         <label class="form-label">Saldo al credito aun pendiente de pagar</label>
+                         <asp:Label ID="SaldoPendiente" runat="server" Text="Saldo al credito aun pendiente"></asp:Label>
+                     </div>
+                     <div class="mb-2">
+                         <label class="form-label">Saldo disponible del cliente en credito</label>
+                         <asp:Label ID="saldoDisponible" runat="server" Text="Saldo crediticio aun disponible "></asp:Label>
+                     </div>
+                 </div>
+             </div>
         </div>
         
         <div class="col-md-4">
